@@ -18,6 +18,22 @@ from urllib2 import URLError, HTTPError
 # Location taken from the location field of the json formated tweet.
 # sentiment140 doesn't handle unicode thus unidecode is used.
 
+def parseResponse(sentimentJsonResponse):
+    returnData = {}
+    sentiment = None
+    for j in sentimentJsonResponse['data']:
+        if int(j['polarity']) == 0:
+            sentiment = 'negative'
+        elif int(j['polarity']) == 4:
+            sentiment = 'positive'
+        elif int(j['polarity']) == 2:
+            sentiment = 'neutral'
+        if (j['location'], sentiment) in returnData:
+            returnData[j['location'],sentiment] += 1
+        else:
+            returnData[j['location'],sentiment] = 1
+    return returnData
+
 def main():
     URL_SENTIMENT140 = 'http://www.sentiment140.com/api/bulkClassifyJson?appid=saxena.nik2@gmail.com'
     tweets = []
@@ -47,22 +63,6 @@ def main():
         print 'Reason: ', e.reason
     except:
         print 'response from server is null or some error has occured'
-
-def parseResponse(sentimentJsonResponse):
-    returnData = {}
-    sentiment = None
-    for j in sentimentJsonResponse['data']:
-        if int(j['polarity']) == 0:
-            sentiment = 'negative'
-        elif int(j['polarity']) == 4:
-            sentiment = 'positive'
-        elif int(j['polarity']) == 2:
-            sentiment = 'neutral'
-        if (j['location'], sentiment) in returnData:
-            returnData[j['location'],sentiment] += 1
-        else:
-            returnData[j['location'],sentiment] = 1
-    return returnData
 
 if __name__ == '__main__':
     main()
