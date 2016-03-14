@@ -17,7 +17,7 @@ I wanted to make use of the location to derive some intuition or understanding a
             
 ######Problems to solve: 
 - The scripts will work fine given json text as input, they have been tested on the linux system, Apache Hadoop in pseudo-distributed mode. But they fail on avro formatted input (the format which Apache Flume uses to store data in HDFS).
-I figured out the solution which is provided by hadoop itself, i.e., to append "-inputformat org.apache.avro.mapred.AvroAsTextInputFormat" hadoop streaming statement and incude the various jar file. This would convert avro to json as required and feed the same to the mapper. But it didn't workout.
+I figured out the solution which is provided by hadoop itself, i.e., to append "-inputformat org.apache.avro.mapred.AvroAsTextInputFormat" to the hadoop streaming statement and incude the various jar file. This would convert avro to json as required and feed the same to the mapper. But it didn't workout.
 - I was forced to enter the stopword list into the mapper, after numerous attempts of including the NLTK corpus into the hadoop system had failed.
 
 #####Part 3: Tweet Intent classification
