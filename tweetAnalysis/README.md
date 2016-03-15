@@ -12,5 +12,5 @@
 Stop words removal and stemming have been applied to get a more realistic count.
 * **locationSentiment*.py**: extracts the location from the tweets if location is absent or absurd sets the location to 'Unknown'. Does sentiment analysis for the tweets using Sentiment140 API. Ultimately maps the location to different sentiments observed with their relative counts.
 * **sampleResult***: sample results obtained on execution of the scripts.
-* **.mod**: modules to be used by the zipimport, should be placed in the same folder as the scripts.
+* ***.mod**: modules to be used by the zipimport, should be placed in the same folder as the scripts.
 * **tweetsSalman.txt, samsungS7Tweets.txt, testavro**: different tweets samples for testing purposes.
