@@ -23,7 +23,7 @@ for it specifically. Got it!
 ##For Flume:
 - things seemed simpler this time, but problems did creep up.
 - did the app setup on twitter to use its API
-- Important: *I have stripped my twitter app keys from the files, following twitter guidelines.*
+- Important: ***I have stripped my twitter app keys from the files, following the Twitter guidelines.***
 - familiarised myself with Flume concepts of sink, channel, source, avro among others.
 
 #####Files:
