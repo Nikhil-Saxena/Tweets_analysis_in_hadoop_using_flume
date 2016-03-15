@@ -21,7 +21,7 @@ I figured out the solution which is provided by hadoop itself, i.e., to append "
 - I was forced to enter the stopword list into the mapper, after numerous attempts of including the NLTK corpus into the hadoop system had failed.
 
 #####Part 3: Tweet Intent classification
-I decided to go with the Naive Bayes Classifier and coded a program which will:
+I decided to go with the Naive Bayes Classifier approach and coded a program which will:
 - clean the tweets
 - train the classifier 
 - make classification
