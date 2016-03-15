@@ -59,6 +59,9 @@ def initializeLists():
         elif tweet['intent'] == 'n':
             neutralTweets.append((tweet['text'],tweet['intent']))
     tweetsData.close()
+    print 'lenght of recommendTweets: ' + str(len(recommendTweets))
+    print 'lenght of purchaseTweets: ' + str(len(purchaseTweets))
+    print 'lenght of neutralTweets: ' + str(len(neutralTweets))
 
 # Function to split training and test sets, it ensures a balanced and
 # unbiased distribution of each type of tweet. 
@@ -102,6 +105,8 @@ def classifier(noOfFeatures):
             wordList.remove(word)
         elif re.search(r'\\u[\w:@.]*', word):
             wordList.remove(word)
+    print 'lenght of wordList: ' + str(len(wordList))
+    print 'lenght of wordFeatures: ' + str(noOfFeatures)
     return wordList[:noOfFeatures]
 
 # Function to extract (words, intent) from a list of classified tweets
@@ -125,8 +130,8 @@ def applyStemmerToTweet(tweet):
     return ' '.join([stemmer.stem(word) for word in tweet.split()])
 
 def main():
-    noOfTweetsOfAType = 10
-    noOfFeatures = 91
+    noOfTweetsOfAType = 15
+    noOfFeatures = 167
     initializeLists()
     seperateTestTraining(noOfTweetsOfAType)
     # trainingTweetsWords, wordFeatures are initialized here
@@ -141,14 +146,16 @@ def main():
         prediction = NBClassifier.classify(extractFeatures(tweetText.split()))
         if prediction == intent:
             count += 1
-    printMsg = 'Accuracy with %d tweets of each type = '
+    printMsg = '---Accuracy with %d tweets of each type = '
     print printMsg %noOfTweetsOfAType + str(count/float(len(testTweets)))
+    print '---Accuracy varies with each run due to random initialization'    
     samplePurchaseTweet = 'Where can I buy a new pair of shoes?'
     sampleRecommendTweet = 'What is a good first-date restaurant in Delhi?'
     print 'Tweet: ' + samplePurchaseTweet + '\nPrediction:'
     print NBClassifier.classify(extractFeatures(samplePurchaseTweet.split()))
     print 'Tweet: ' + sampleRecommendTweet + '\nPrediction:'
     print NBClassifier.classify(extractFeatures(sampleRecommendTweet.split()))
+
 
 if __name__ == '__main__':
     main()

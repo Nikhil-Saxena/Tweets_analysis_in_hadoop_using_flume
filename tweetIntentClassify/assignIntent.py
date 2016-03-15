@@ -14,7 +14,7 @@ import random
 # 'n': neutral/none
 # 'q': ignore this tweet and move on
 
-classifyNtweets = 5
+classifyNtweets = 25
 tweetsFile = open('tweetsForIntentAnalysis','r')
 ftw = open('classifiedTweets.json','w')
 tweetsList = list(tweetsFile)
@@ -36,7 +36,7 @@ while count < classifyNtweets:
             ftw.write('\n')
             count += 1
     except:
-        print 'invalid input, Skipping tweet.\n'
+        print 'invalid tweet/input, Skipping tweet.\n'
         continue
 ftw.close()
 tweetsFile.close()
