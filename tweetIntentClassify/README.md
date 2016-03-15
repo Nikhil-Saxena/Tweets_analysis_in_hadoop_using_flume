@@ -6,15 +6,14 @@
 
 ##Files:
 Providing a brief intro to files, proper commenting has been done in the files for further information.
-- assignIntent.py: program to hand classify random n tweets from a tweets file
-- getTweets.py: this file is contained in the misc folder. Uses tweepy library to fetch tweets having the stated words.
-*Usage: $ python misc/getTweets.py >> fetchedTweets*
-Useful for fetching JSON formatted tweets, for testing purposes.
-- generateFeatureAccuracyPlot.py: modified intentAnalysis.py for making line plots of noOfFeatures v/s accuracy
-- tweetsForIntentAnalysis: sample tweets to be classified.
-- classifiedTweets: hand classified tweets, they are the limiter to accuracy as training set size is small.
-- featureAccuracyPlt*: various plots of noOfFeatures v/s accuracy, used to set the noOfFeatures. currently noOfFeatures = 167
-- intentAnalysis.py: The main program used to do the analysis.
+- **assignIntent.py**: program to hand classify random n tweets from a tweets file
+- **getTweets.py**: this file is contained in the misc folder. Uses tweepy library to fetch tweets having the stated words. Useful for fetching JSON formatted tweets, for testing purposes.
+    *Usage: $ python misc/getTweets.py >> fetchedTweet*
+- **generateFeatureAccuracyPlot.py**: modified intentAnalysis.py for making line plots of noOfFeatures v/s accuracy
+- **tweetsForIntentAnalysis**: sample tweets to be classified.
+- **classifiedTweets**: hand classified tweets, they are the limiter to accuracy as training set size is small.
+- **featureAccuracyPlt**: various plots of noOfFeatures v/s accuracy, used to set the noOfFeatures. currently noOfFeatures = 167
+- **intentAnalysis.py**: The main program used to do the analysis.
   - Clean the tweets:
       - remove stopwords, stem similar words, web and email addresses
       - seperate test and training data in an unbiased way, while ensuring a good mix of all types of tweets to classify. 
