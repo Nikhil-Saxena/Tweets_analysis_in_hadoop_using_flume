@@ -1,4 +1,4 @@
-#!/usr/bin/env/ python
+#!/usr/bin/env python
 import json
 import random
 
@@ -14,7 +14,7 @@ import random
 # 'n': neutral/none
 # 'q': ignore this tweet and move on
 
-classifyNtweets = 25
+classifyNtweets = 5
 tweetsFile = open('tweetsForIntentAnalysis','r')
 ftw = open('classifiedTweets.json','w')
 tweetsList = list(tweetsFile)
@@ -24,10 +24,10 @@ while count < classifyNtweets:
     index = random.randrange(0,len(tweetsList),2)
     try:
         tweet = json.loads(tweetsList[index])
-        print tweet['text'] + '\n'
-        intent = input('tweet intent?')
-        while input not in ['r', 'p', 'n', 'q']:
-            intent = input('invalid input, try again: ')
+        print '\n' + tweet['text'] + '\n'
+        intent = raw_input('tweet intent?')
+        while intent not in ['r', 'p', 'n', 'q']:
+            intent = raw_input('invalid input, try again: ')
         tweetsData['text'] = tweet['text']
         tweetsData['intent'] = intent
         tweetsList.pop(index)
@@ -36,6 +36,7 @@ while count < classifyNtweets:
             ftw.write('\n')
             count += 1
     except:
+        print 'invalid input, Skipping tweet.\n'
         continue
 ftw.close()
 tweetsFile.close()
